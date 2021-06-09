@@ -19,7 +19,11 @@
     "rollup:esm:es5": "cross-env NODE_ENV=esm5 rollup -c",
     "gen-dts": "npx tsc main/index.js --declaration --allowJs --emitDeclarationOnly --outDir types",
     "gen-docs": "jsdoc2md \"main/**/*.js\" > docs/readme.md",
-    "gen-dts:docs": "yarn run gen-dts && yarn run gen-docs"
+    "gen-dts:docs": "yarn run gen-dts && yarn run gen-docs",
+    "tsc:rebuild": "yarn run tsc:clean && yarn run tsc:build",
+    "tsc:build": "tsc -b tsconfig.json",
+    "tsc:watch": "tsc -b tsconfig.json --watch",
+    "tsc:clean": "tsc -b tsconfig.json --clean"
   },
   "files": [
     "docs",
@@ -32,6 +36,12 @@
   ],
   "types": "types/index.d.ts",
   "dependencies": {
+    "@types/mkdirp": "^0.5.2",
+    "@types/mz": "^0.0.32",
+    "mkdirp": "^0.5.1",
+    "mz": "^2.7.0",
+    "vm2": "^3.9.3",
+    "debug": "^4.3.1"
   },
   "devDependencies": {
     "@babel/core": "^7.12.3",
