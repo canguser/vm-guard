@@ -27,7 +27,7 @@ export class VmGuard implements WorkerHost {
   }
 
   async run(script: string) {
-    const scriptEntity = new Script(script, 5000);
+    const scriptEntity = new Script(script, this.options.timeout);
     const worker = this.getWorker();
     if (!worker) {
       this.pendingScripts.push(scriptEntity);
@@ -60,6 +60,14 @@ export class VmGuard implements WorkerHost {
     for (const worker of this.workers) {
       worker.destroy();
     }
+  }
+
+  adjustWorks() {
+    this.workers = this.workers.filter(worker => worker.state !== ProcessState.DESTROY);
+  }
+
+  onWorkerDestroy(worker: Worker): void {
+    this.adjustWorks();
   }
 
 }

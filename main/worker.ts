@@ -107,6 +107,7 @@ export class Worker {
 
     if (this.process.connected) this.process.disconnect();
     if (!this.process.killed) this.process.kill('SIGKILL');
+    this.host.onWorkerDestroy(this);
 
     this.state = ProcessState.DESTROY;
     return true;
