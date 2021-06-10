@@ -1,4 +1,4 @@
-# VM Guard for Javascript
+# VM Guard for NodeJS
 
 > A more secure multi thread sandbox for NodeJS
 
@@ -13,7 +13,7 @@
     while (true) {}
     ```
 3. 可以限定每个线程的 CPU 或者 内存 占用（仅支持 `Linux`）
-3. `VM2` 仅支持 `NodeJS` 环境（浏览器环境的支持可能需要使用到 `Worker`, 尽情期待）
+3. `VM2` 仅支持 `NodeJS` 环境（浏览器环境的支持可能需要使用到 `Worker`, 敬请期待）
 
 ## 与 `VM2` 的兼容
 - `VM Guard` 可以使用所有 `VM2` 中 [`NodeVM` 的配置选项](https://github.com/patriksimek/vm2#nodevm)
