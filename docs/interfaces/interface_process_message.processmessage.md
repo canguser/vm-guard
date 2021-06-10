@@ -23,7 +23,7 @@
 
 #### Defined in
 
-[main/interface/process.message.ts:5](https://github.com/canguser/vm-guard/blob/a9ff35a/main/interface/process.message.ts#L5)
+[main/interface/process.message.ts:5](https://github.com/canguser/vm-guard/blob/618d180/main/interface/process.message.ts#L5)
 
 ___
 
@@ -33,4 +33,4 @@ ___
 
 #### Defined in
 
-[main/interface/process.message.ts:4](https://github.com/canguser/vm-guard/blob/a9ff35a/main/interface/process.message.ts#L4)
+[main/interface/process.message.ts:4](https://github.com/canguser/vm-guard/blob/618d180/main/interface/process.message.ts#L4)

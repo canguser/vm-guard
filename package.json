@@ -1,6 +1,6 @@
 {
   "name": "vm-guard",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "A safer VM framework",
   "main": "lib/index.js",
   "mainMini": "dist/vm-guard.mini.js",
@@ -10,7 +10,7 @@
   "license": "Apache-2.0",
   "scripts": {
     "build": "yarn run tsc:rebuild",
-    "do-publish": "yarn run build && yarn run run-publish",
+    "do-publish": "yarn run build && yarn run gen-docs && yarn run run-publish",
     "run-publish": "yarn publish --access public --tag latest --new-version $npm_package_version",
     "gen-docs": "typedoc --out docs main/**/*.ts",
     "tsc:rebuild": "yarn run tsc:clean && yarn run tsc:build",

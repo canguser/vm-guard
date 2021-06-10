@@ -92,7 +92,7 @@ export class Worker {
   private run(script: string, path?: string): void {
     log(`running script, pid: ${this.pid}, script: \n${script}`);
     this.process.send({
-        type: ProcessMessageType.RUN_SCRIPT, detail: { script, options: this.options }
+        type: ProcessMessageType.RUN_SCRIPT, detail: { script, options: this.options, path }
       }
     );
   }
