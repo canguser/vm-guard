@@ -1,3 +1,5 @@
+vm-guard / [Modules](modules.md)
+
 # VM Guard for Javascript
 
 > A more secure multi thread sandbox for NodeJS
@@ -68,9 +70,5 @@ const { VmGuard } = require('vm-guard');
     vm.run('console.log(\'18\' + a)');
   }, 2000);
 
-
 })();
 ```
-
-## Documentation Details
-[https://github.com/canguser/vm-guard/blob/master/docs]

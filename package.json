@@ -10,16 +10,10 @@
   "author": "Cangshi",
   "license": "Apache-2.0",
   "scripts": {
-    "build": "yarn run rollup && yarn run rollup:mini && yarn run rollup:esm:es5",
+    "build": "yarn run tsc:rebuild",
     "do-publish": "yarn run build && yarn run run-publish",
     "run-publish": "yarn publish --access public --tag latest --new-version $npm_package_version",
-    "rollup": "rollup -c",
-    "rollup:mini": "cross-env NODE_ENV=prod rollup -c",
-    "rollup:esm": "cross-env NODE_ENV=esm rollup -c",
-    "rollup:esm:es5": "cross-env NODE_ENV=esm5 rollup -c",
-    "gen-dts": "npx tsc main/index.js --declaration --allowJs --emitDeclarationOnly --outDir types",
-    "gen-docs": "jsdoc2md \"main/**/*.js\" > docs/readme.md",
-    "gen-dts:docs": "yarn run gen-dts && yarn run gen-docs",
+    "gen-docs": "typedoc --out docs main/**/*.ts",
     "tsc:rebuild": "yarn run tsc:clean && yarn run tsc:build",
     "tsc:build": "tsc -b tsconfig.json",
     "tsc:watch": "tsc -b tsconfig.json --watch",
@@ -44,21 +38,10 @@
     "debug": "^4.3.1"
   },
   "devDependencies": {
-    "@babel/core": "^7.12.3",
-    "@babel/plugin-transform-runtime": "^7.12.1",
-    "@babel/plugin-proposal-object-rest-spread": "^7.12.1",
-    "@babel/polyfill": "^7.12.1",
-    "@babel/preset-env": "^7.12.1",
     "@types/node": "^15.12.2",
-    "babel-loader": "^8.2.2",
-    "cross-env": "^7.0.3",
-    "jsdoc-to-markdown": "^6.0.1",
-    "rollup": "^2.34.0",
-    "rollup-plugin-babel": "^4.4.0",
-    "rollup-plugin-commonjs": "^10.1.0",
-    "rollup-plugin-node-resolve": "^5.2.0",
-    "rollup-plugin-terser": "^7.0.2",
-    "typescript": "^4.1.2"
+    "typescript": "^4.1.2",
+    "typedoc": "^0.20.36",
+    "typedoc-plugin-markdown": "^3.8.1"
   },
   "repository": "https://github.com/canguser/vm-guard.git"
 }

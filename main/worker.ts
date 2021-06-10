@@ -44,15 +44,18 @@ export class Worker {
     this.startListenEvent();
   }
 
-  private defer(r: any) {
+  public defer(r: any) {
     if (this.currentScript) {
       this.currentScript.defer(r);
+      this.finishScript();
     }
   }
 
-  private deferError(e: any) {
+  public deferError(e: any) {
     if (this.currentScript) {
+      log('Before script error');
       this.currentScript.error(e);
+      this.finishScript();
     }
   }
 
@@ -65,11 +68,9 @@ export class Worker {
               if (message.type === ProcessMessageType.RETURN) {
                 const { result } = message.detail || {};
                 this.defer(result);
-                this.finishScript();
               } else if (message.type === ProcessMessageType.SCRIPT_ERROR) {
                 const { error } = message.detail || {};
                 this.deferError(error);
-                this.finishScript();
               }
             }
           });
@@ -94,6 +95,7 @@ export class Worker {
   }
 
   public async runScript(script: Script) {
+    script.bindWorker(this);
     this.state = ProcessState.RUNNING;
     this.currentScript = script;
     this.run(script.content);

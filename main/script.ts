@@ -1,11 +1,18 @@
+import { Worker } from './worker';
+
 export class Script {
 
   private resolve: (r: any) => void;
   private reject: (r: any) => void;
   private promise: Promise<any>;
   private timeoutId: NodeJS.Timer;
+  private worker: Worker;
 
   constructor(public content: string, public timeout: number = 1000) {
+  }
+
+  public bindWorker(worker: Worker) {
+    this.worker = worker;
   }
 
   public getScriptResult(): Promise<any> {
@@ -20,7 +27,12 @@ export class Script {
 
   public assertStart(): Promise<any> {
     this.timeoutId = setTimeout(() => {
-      this.error('Script execute timeout.');
+      const error = new Error(`Script execute timeout: '${this.content.replace(/[\n\s\t\r]+/g, ' ').trim()}'`);
+      if (this.worker) {
+        this.worker.deferError(error);
+      } else {
+        this.error(error);
+      }
     }, this.timeout);
     return this.getScriptResult();
   }
