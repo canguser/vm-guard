@@ -72,3 +72,6 @@ const { VmGuard } = require('vm-guard');
 
 })();
 ```
+
+## Documentation Details
+[https://github.com/canguser/vm-guard/blob/master/docs](https://github.com/canguser/vm-guard/blob/master/docs)
