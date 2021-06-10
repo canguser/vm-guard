@@ -73,7 +73,7 @@ ___
 
 #### Defined in
 
-[main/interface/guard.options.ts:4](https://github.com/canguser/vm-guard/blob/195b05f/main/interface/guard.options.ts#L4)
+[main/interface/guard.options.ts:4](https://github.com/canguser/vm-guard/blob/a9ff35a/main/interface/guard.options.ts#L4)
 
 ___
 
@@ -99,7 +99,7 @@ ___
 
 #### Defined in
 
-[main/interface/guard.options.ts:7](https://github.com/canguser/vm-guard/blob/195b05f/main/interface/guard.options.ts#L7)
+[main/interface/guard.options.ts:7](https://github.com/canguser/vm-guard/blob/a9ff35a/main/interface/guard.options.ts#L7)
 
 ___
 
@@ -159,7 +159,7 @@ ___
 
 #### Defined in
 
-[main/interface/guard.options.ts:6](https://github.com/canguser/vm-guard/blob/195b05f/main/interface/guard.options.ts#L6)
+[main/interface/guard.options.ts:6](https://github.com/canguser/vm-guard/blob/a9ff35a/main/interface/guard.options.ts#L6)
 
 ___
 
@@ -237,7 +237,7 @@ NodeVMOptions.timeout
 
 #### Defined in
 
-[main/interface/guard.options.ts:5](https://github.com/canguser/vm-guard/blob/195b05f/main/interface/guard.options.ts#L5)
+[main/interface/guard.options.ts:5](https://github.com/canguser/vm-guard/blob/a9ff35a/main/interface/guard.options.ts#L5)
 
 ___
 

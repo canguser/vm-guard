@@ -1,6 +1,6 @@
 vm-guard / [Modules](modules.md)
 
-# VM Guard for Javascript
+# VM Guard for NodeJS
 
 > A more secure multi thread sandbox for NodeJS
 
@@ -15,7 +15,7 @@ vm-guard / [Modules](modules.md)
     while (true) {}
     ```
 3. 可以限定每个线程的 CPU 或者 内存 占用（仅支持 `Linux`）
-3. `VM2` 仅支持 `NodeJS` 环境（浏览器环境的支持可能需要使用到 `Worker`, 尽情期待）
+3. `VM2` 仅支持 `NodeJS` 环境（浏览器环境的支持可能需要使用到 `Worker`, 敬请期待）
 
 ## 与 `VM2` 的兼容
 - `VM Guard` 可以使用所有 `VM2` 中 [`NodeVM` 的配置选项](https://github.com/patriksimek/vm2#nodevm)
@@ -24,7 +24,7 @@ vm-guard / [Modules](modules.md)
     |-|-|-|
     |`concurrency`|`2`|并发数量|
     |`timeout`|`1000`|包含异步/同步操作的超时时间（单位 ms）|
-    |`memoryQuota`|`1000`|最大能使用的内存（单位 m）|
+    |`memoryQuota`|`100`|最大能使用的内存（单位 m）|
     |`cpuQuota`|`0.5`|cpu 资源配额（百分比）|
 
 ## 简单安装
