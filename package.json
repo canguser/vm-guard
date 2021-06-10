@@ -1,10 +1,9 @@
 {
   "name": "vm-guard",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A safer VM framework",
-  "main": "dist/vm-guard.js",
+  "main": "lib/index.js",
   "mainMini": "dist/vm-guard.mini.js",
-  "module": "dist/vm-guard.es.js",
   "libName": "vmGuard",
   "_sourceName": "vm.guard",
   "author": "Cangshi",
@@ -20,6 +19,7 @@
     "tsc:clean": "tsc -b tsconfig.json --clean"
   },
   "files": [
+    "lib",
     "docs",
     "dist",
     "build",
@@ -28,7 +28,7 @@
     "LICENSE",
     "package.json"
   ],
-  "types": "types/index.d.ts",
+  "types": "lib/index.d.ts",
   "dependencies": {
     "@types/mkdirp": "^0.5.2",
     "@types/mz": "^0.0.32",
