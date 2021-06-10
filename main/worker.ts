@@ -70,7 +70,10 @@ export class Worker {
                 this.defer(result);
               } else if (message.type === ProcessMessageType.SCRIPT_ERROR) {
                 const { error } = message.detail || {};
-                this.deferError(error);
+                const e = new Error(error.message);
+                e.name = error.name;
+                e.stack = error.stack;
+                this.deferError(e);
               }
             }
           });

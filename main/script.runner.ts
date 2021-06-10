@@ -12,13 +12,26 @@ async function dealMessage(message: ProcessMessage) {
   if (message.type === ProcessMessageType.RUN_SCRIPT) {
     const { script, options = {} } = message.detail || {};
     if (script) {
-      const result = await Promise.resolve(await runScript(script, options));
-      process.send({
-        type: ProcessMessageType.RETURN,
-        detail: {
-          result
-        }
-      });
+      try {
+        const result = await Promise.resolve(await runScript(script, options));
+        process.send({
+          type: ProcessMessageType.RETURN,
+          detail: {
+            result
+          }
+        });
+      } catch (e) {
+        process.send({
+          type: ProcessMessageType.SCRIPT_ERROR,
+          detail: {
+            error: {
+              name: e.name,
+              message: e.message,
+              stack: e.stack
+            }
+          }
+        });
+      }
     }
   }
 }

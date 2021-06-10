@@ -14,12 +14,13 @@ debug.enable('vm-guard');
 
   try {
     await Promise.all([
+      vm.run('throw new Error(\'adsdas\')'),
       // 以下输出由于在多线程下，不会以特定顺序输出
       vm.run('console.log(\'1\' + a)'),
       vm.run('console.log(\'2\' + a)'),
       vm.run('console.log(\'3\' + a)'),
       vm.run('console.log(\'4\' + a)'),
-      vm.run('console.log(\'5\' + a)'),
+      vm.run('console.log(\'5\' + a)')
       // 运行恶意代码会导致超时
       // vm.run(`
       //   while(true){}
