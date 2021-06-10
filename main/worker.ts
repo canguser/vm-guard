@@ -89,7 +89,7 @@ export class Worker {
     this.host.onWorkerActive(this);
   }
 
-  private run(script: string): void {
+  private run(script: string, path?: string): void {
     log(`running script, pid: ${this.pid}, script: \n${script}`);
     this.process.send({
         type: ProcessMessageType.RUN_SCRIPT, detail: { script, options: this.options }
@@ -101,7 +101,7 @@ export class Worker {
     script.bindWorker(this);
     this.state = ProcessState.RUNNING;
     this.currentScript = script;
-    this.run(script.content);
+    this.run(script.content, script.path);
     return script.assertStart();
   }
 

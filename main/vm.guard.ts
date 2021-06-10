@@ -58,9 +58,9 @@ export class VmGuard implements WorkerHost {
     });
   }
 
-  async run(script: string) {
+  async run(script: string, path?: string) {
     await this.waitingCGroupCreated();
-    const scriptEntity = new Script(script, this.options.timeout);
+    const scriptEntity = new Script(script, this.options.timeout, path || './');
     const worker = await this.getWorker();
     if (!worker) {
       this.pendingScripts.push(scriptEntity);

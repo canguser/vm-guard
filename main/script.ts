@@ -8,7 +8,7 @@ export class Script {
   private timeoutId: NodeJS.Timer;
   private worker: Worker;
 
-  constructor(public content: string, public timeout: number = 1000) {
+  constructor(public content: string, public timeout: number = 1000, public path?: string) {
   }
 
   public bindWorker(worker: Worker) {
