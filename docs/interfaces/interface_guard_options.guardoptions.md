@@ -25,6 +25,7 @@
 - [globalAsync](interface_guard_options.guardoptions.md#globalasync)
 - [memoryQuota](interface_guard_options.guardoptions.md#memoryquota)
 - [nesting](interface_guard_options.guardoptions.md#nesting)
+- [noHardwareLimit](interface_guard_options.guardoptions.md#nohardwarelimit)
 - [require](interface_guard_options.guardoptions.md#require)
 - [sandbox](interface_guard_options.guardoptions.md#sandbox)
 - [sourceExtensions](interface_guard_options.guardoptions.md#sourceextensions)
@@ -74,7 +75,7 @@ ___
 
 #### Defined in
 
-[main/interface/guard.options.ts:4](https://github.com/canguser/vm-guard/blob/9a0d338/main/interface/guard.options.ts#L4)
+[main/interface/guard.options.ts:4](https://github.com/canguser/vm-guard/blob/46d011c/main/interface/guard.options.ts#L4)
 
 ___
 
@@ -100,7 +101,7 @@ ___
 
 #### Defined in
 
-[main/interface/guard.options.ts:7](https://github.com/canguser/vm-guard/blob/9a0d338/main/interface/guard.options.ts#L7)
+[main/interface/guard.options.ts:7](https://github.com/canguser/vm-guard/blob/46d011c/main/interface/guard.options.ts#L7)
 
 ___
 
@@ -160,7 +161,7 @@ ___
 
 #### Defined in
 
-[main/interface/guard.options.ts:8](https://github.com/canguser/vm-guard/blob/9a0d338/main/interface/guard.options.ts#L8)
+[main/interface/guard.options.ts:9](https://github.com/canguser/vm-guard/blob/46d011c/main/interface/guard.options.ts#L9)
 
 ___
 
@@ -170,7 +171,7 @@ ___
 
 #### Defined in
 
-[main/interface/guard.options.ts:6](https://github.com/canguser/vm-guard/blob/9a0d338/main/interface/guard.options.ts#L6)
+[main/interface/guard.options.ts:6](https://github.com/canguser/vm-guard/blob/46d011c/main/interface/guard.options.ts#L6)
 
 ___
 
@@ -187,6 +188,16 @@ NodeVMOptions.nesting
 #### Defined in
 
 node_modules/vm2/index.d.ts:72
+
+___
+
+### noHardwareLimit
+
+• `Optional` **noHardwareLimit**: `boolean`
+
+#### Defined in
+
+[main/interface/guard.options.ts:8](https://github.com/canguser/vm-guard/blob/46d011c/main/interface/guard.options.ts#L8)
 
 ___
 
@@ -248,7 +259,7 @@ NodeVMOptions.timeout
 
 #### Defined in
 
-[main/interface/guard.options.ts:5](https://github.com/canguser/vm-guard/blob/9a0d338/main/interface/guard.options.ts#L5)
+[main/interface/guard.options.ts:5](https://github.com/canguser/vm-guard/blob/46d011c/main/interface/guard.options.ts#L5)
 
 ___
 

@@ -12,7 +12,8 @@ const defaultOptions: GuardOptions = {
   concurrency: 2,
   cpuQuota: 0.5,
   memoryQuota: 125,
-  globalAsync: false
+  globalAsync: false,
+  noHardwareLimit: false
 };
 
 export class VmGuard implements WorkerHost {
@@ -109,7 +110,9 @@ export class VmGuard implements WorkerHost {
   private async newWorker(): Promise<Worker> {
     const targetWorker = new Worker(this.options);
     targetWorker.bindHost(this);
-    await this.cgroups.addProcess(targetWorker.pid);
+    if (!this.options.noHardwareLimit) {
+      await this.cgroups.addProcess(targetWorker.pid);
+    }
     this.workers.push(targetWorker);
     return targetWorker;
   }
@@ -146,7 +149,7 @@ export class VmGuard implements WorkerHost {
   }
 
   private createControlGroup(): Promise<void[][]> {
-    this.cgroups = new CGroups('safeify');
+    this.cgroups = new CGroups('vm-guard');
     const { cpuQuota, memoryQuota } = this.options;
     return Promise.resolve(this.cgroups.set({
       cpu: { cfs_quota_us: 100000 * cpuQuota },
