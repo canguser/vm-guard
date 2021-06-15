@@ -9,11 +9,13 @@ debug.enable('vm-guard');
     sandbox: {
       a: ' test'
     }, // vm2 的 options
-    concurrency: 2 // 并发限制
+    concurrency: 2, // 并发限制
+    globalAsync: true
   });
 
+
   try {
-    await Promise.all([
+    const a = await Promise.all([
       vm.run('throw new Error(\'adsdas\')'),
       // 以下输出由于在多线程下，不会以特定顺序输出
       vm.run('console.log(\'1\' + a)'),
@@ -26,6 +28,7 @@ debug.enable('vm-guard');
       //   while(true){}
       // `)
     ]);
+    console.log(a);
   } catch (e) {
     // 捕获超时或其它异常
     console.log(e);

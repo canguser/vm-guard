@@ -11,7 +11,8 @@ const defaultOptions: GuardOptions = {
   timeout: 1000,
   concurrency: 2,
   cpuQuota: 0.5,
-  memoryQuota: 125
+  memoryQuota: 125,
+  globalAsync: false
 };
 
 export class VmGuard implements WorkerHost {

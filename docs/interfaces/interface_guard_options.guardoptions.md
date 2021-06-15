@@ -22,6 +22,7 @@
 - [env](interface_guard_options.guardoptions.md#env)
 - [eval](interface_guard_options.guardoptions.md#eval)
 - [fixAsync](interface_guard_options.guardoptions.md#fixasync)
+- [globalAsync](interface_guard_options.guardoptions.md#globalasync)
 - [memoryQuota](interface_guard_options.guardoptions.md#memoryquota)
 - [nesting](interface_guard_options.guardoptions.md#nesting)
 - [require](interface_guard_options.guardoptions.md#require)
@@ -73,7 +74,7 @@ ___
 
 #### Defined in
 
-[main/interface/guard.options.ts:4](https://github.com/canguser/vm-guard/blob/618d180/main/interface/guard.options.ts#L4)
+[main/interface/guard.options.ts:4](https://github.com/canguser/vm-guard/blob/9a0d338/main/interface/guard.options.ts#L4)
 
 ___
 
@@ -99,7 +100,7 @@ ___
 
 #### Defined in
 
-[main/interface/guard.options.ts:7](https://github.com/canguser/vm-guard/blob/618d180/main/interface/guard.options.ts#L7)
+[main/interface/guard.options.ts:7](https://github.com/canguser/vm-guard/blob/9a0d338/main/interface/guard.options.ts#L7)
 
 ___
 
@@ -153,13 +154,23 @@ node_modules/vm2/index.d.ts:60
 
 ___
 
+### globalAsync
+
+• `Optional` **globalAsync**: `boolean`
+
+#### Defined in
+
+[main/interface/guard.options.ts:8](https://github.com/canguser/vm-guard/blob/9a0d338/main/interface/guard.options.ts#L8)
+
+___
+
 ### memoryQuota
 
 • `Optional` **memoryQuota**: `number`
 
 #### Defined in
 
-[main/interface/guard.options.ts:6](https://github.com/canguser/vm-guard/blob/618d180/main/interface/guard.options.ts#L6)
+[main/interface/guard.options.ts:6](https://github.com/canguser/vm-guard/blob/9a0d338/main/interface/guard.options.ts#L6)
 
 ___
 
@@ -237,7 +248,7 @@ NodeVMOptions.timeout
 
 #### Defined in
 
-[main/interface/guard.options.ts:5](https://github.com/canguser/vm-guard/blob/618d180/main/interface/guard.options.ts#L5)
+[main/interface/guard.options.ts:5](https://github.com/canguser/vm-guard/blob/9a0d338/main/interface/guard.options.ts#L5)
 
 ___
 

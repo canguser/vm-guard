@@ -5,4 +5,5 @@ export interface GuardOptions extends NodeVMOptions {
   timeout?: number;
   memoryQuota?: number;
   cpuQuota?: number;
+  globalAsync?: boolean
 }

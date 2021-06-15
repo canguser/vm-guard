@@ -8,12 +8,30 @@ async function runScript(script: string, options?: GuardOptions, path?: string) 
   return vm.run(script, path);
 }
 
+function getAsyncScript(script: string) {
+  return `
+    module.exports = (async function(){
+        ${script}
+    })();
+  `;
+}
+
 async function dealMessage(message: ProcessMessage) {
   if (message.type === ProcessMessageType.RUN_SCRIPT) {
-    const { script, options = {}, path = './' } = message.detail || {};
+    let { script, options = {}, path = './' } = message.detail || {};
+    const { globalAsync } = options;
     if (script) {
+      if (globalAsync) {
+        script = getAsyncScript(script);
+        options.wrapper = 'commonjs';
+      }
       try {
-        const result = await Promise.resolve(await runScript(script, options, path));
+        let result = await runScript(script, options, path);
+
+        if (globalAsync) {
+          result = await result;
+        }
+
         process.send({
           type: ProcessMessageType.RETURN,
           detail: {
