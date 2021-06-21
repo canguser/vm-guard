@@ -1,6 +1,6 @@
 {
   "name": "vm-guard",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "A safer VM framework",
   "main": "lib/index.js",
   "mainMini": "dist/vm-guard.mini.js",

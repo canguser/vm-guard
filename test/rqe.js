@@ -1,19 +1,23 @@
-const { VmGuard } = require('../lib');
-
-const vm = new VmGuard({
-  timeout: 30000,
-  require: {
-    external: {
-      modules: ['@scope/*-ver-??']
-    }
-  },
-  globalAsync: true,
-  noHardwareLimit: true
-});
+const { run } = require('../lib');
 
 (async () => {
-  console.log(await vm.run(`
-            const instanceType = require('./erqe');
-            return instanceType;
-        `, 'vm.js'));
+  const code = `
+  console.log(process)
+  const fs = require('fs')
+  return fs.statSync('/')
+`;
+
+  console.log(
+    await run(code, {
+      allowedModules: ['.*'],
+      allowedVariables: ['.*'],
+      legacyRequire: false,
+      sandbox:{
+        require:123,
+        process: 123
+      },
+      wrapper: 'none'
+    })
+  );
 })();
+

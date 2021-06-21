@@ -29,7 +29,7 @@
 
 #### Defined in
 
-[main/interface/WorkerHost.ts:4](https://github.com/canguser/vm-guard/blob/92e9a97/main/interface/WorkerHost.ts#L4)
+[main/interface/WorkerHost.ts:4](https://github.com/canguser/vm-guard/blob/36416e4/main/interface/WorkerHost.ts#L4)
 
 ___
 
@@ -49,4 +49,4 @@ ___
 
 #### Defined in
 
-[main/interface/WorkerHost.ts:5](https://github.com/canguser/vm-guard/blob/92e9a97/main/interface/WorkerHost.ts#L5)
+[main/interface/WorkerHost.ts:5](https://github.com/canguser/vm-guard/blob/36416e4/main/interface/WorkerHost.ts#L5)

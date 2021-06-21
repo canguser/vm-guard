@@ -160,7 +160,7 @@ export async function run(script: string, options: SimpleRunOptions = {}) {
 
   const runSnippet = await NodeVM.code(scriptWrapped, '.vm.js', options);
 
-  await runSnippet(context);
+  const result = await runSnippet(context);
 
-  return mockModule.exports || {};
+  return options.wrapper === 'none' ? result : (mockModule.exports || {});
 }

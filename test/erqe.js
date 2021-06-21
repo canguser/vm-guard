@@ -5,17 +5,14 @@ const { run } = require('../lib');
   console.log(process)
   const fs = require('fs')
   module.exports = fs.statSync('/')
+  return 100
 `;
 
   console.log(
     await run(code, {
       allowedModules: ['.*'],
-      allowedVariables: ['.*'],
       legacyRequire: false,
-      sandbox:{
-        require:123,
-        process: 123
-      }
+      wrapper: 'none'
     })
   );
 })();
