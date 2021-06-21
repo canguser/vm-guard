@@ -2,10 +2,10 @@ import { NodeVM } from 'vm2';
 import { GuardOptions } from './interface/guard.options';
 import { ProcessMessage } from './interface/process.message';
 import { ProcessMessageType } from './enum/process.message.type';
+import { run } from './simple-run';
 
 async function runScript(script: string, options?: GuardOptions, path?: string) {
-  const vm = new NodeVM(options);
-  return vm.run(script, path);
+  return run(script, options);
 }
 
 function getAsyncScript(script: string) {

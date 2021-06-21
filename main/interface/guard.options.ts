@@ -1,6 +1,6 @@
-import { NodeVMOptions } from 'vm2';
+import { SimpleRunOptions } from '../simple-run';
 
-export interface GuardOptions extends NodeVMOptions {
+export interface GuardOptions extends SimpleRunOptions {
   concurrency?: number;
   timeout?: number;
   memoryQuota?: number;

@@ -6,7 +6,7 @@
 
 ## Hierarchy
 
-- `NodeVMOptions`
+- `SimpleRunOptions`
 
   ↳ **GuardOptions**
 
@@ -14,6 +14,8 @@
 
 ### Properties
 
+- [allowedModules](interface_guard_options.guardoptions.md#allowedmodules)
+- [allowedVariables](interface_guard_options.guardoptions.md#allowedvariables)
 - [argv](interface_guard_options.guardoptions.md#argv)
 - [compiler](interface_guard_options.guardoptions.md#compiler)
 - [concurrency](interface_guard_options.guardoptions.md#concurrency)
@@ -23,6 +25,7 @@
 - [eval](interface_guard_options.guardoptions.md#eval)
 - [fixAsync](interface_guard_options.guardoptions.md#fixasync)
 - [globalAsync](interface_guard_options.guardoptions.md#globalasync)
+- [legacyRequire](interface_guard_options.guardoptions.md#legacyrequire)
 - [memoryQuota](interface_guard_options.guardoptions.md#memoryquota)
 - [nesting](interface_guard_options.guardoptions.md#nesting)
 - [noHardwareLimit](interface_guard_options.guardoptions.md#nohardwarelimit)
@@ -35,6 +38,34 @@
 
 ## Properties
 
+### allowedModules
+
+• `Optional` **allowedModules**: (`string` \| `RegExp`)[]
+
+#### Inherited from
+
+SimpleRunOptions.allowedModules
+
+#### Defined in
+
+[main/simple-run.ts:7](https://github.com/canguser/vm-guard/blob/92e9a97/main/simple-run.ts#L7)
+
+___
+
+### allowedVariables
+
+• `Optional` **allowedVariables**: (`string` \| `RegExp`)[]
+
+#### Inherited from
+
+SimpleRunOptions.allowedVariables
+
+#### Defined in
+
+[main/simple-run.ts:6](https://github.com/canguser/vm-guard/blob/92e9a97/main/simple-run.ts#L6)
+
+___
+
 ### argv
 
 • `Optional` **argv**: `string`[]
@@ -44,7 +75,7 @@ This object will not be copied and the script can change this object.
 
 #### Inherited from
 
-NodeVMOptions.argv
+SimpleRunOptions.argv
 
 #### Defined in
 
@@ -61,7 +92,7 @@ ___
 
 #### Inherited from
 
-NodeVMOptions.compiler
+SimpleRunOptions.compiler
 
 #### Defined in
 
@@ -75,7 +106,7 @@ ___
 
 #### Defined in
 
-[main/interface/guard.options.ts:4](https://github.com/canguser/vm-guard/blob/46d011c/main/interface/guard.options.ts#L4)
+[main/interface/guard.options.ts:4](https://github.com/canguser/vm-guard/blob/92e9a97/main/interface/guard.options.ts#L4)
 
 ___
 
@@ -87,7 +118,7 @@ ___
 
 #### Inherited from
 
-NodeVMOptions.console
+SimpleRunOptions.console
 
 #### Defined in
 
@@ -101,7 +132,7 @@ ___
 
 #### Defined in
 
-[main/interface/guard.options.ts:7](https://github.com/canguser/vm-guard/blob/46d011c/main/interface/guard.options.ts#L7)
+[main/interface/guard.options.ts:7](https://github.com/canguser/vm-guard/blob/92e9a97/main/interface/guard.options.ts#L7)
 
 ___
 
@@ -114,7 +145,7 @@ This object will not be copied and the script can change this object.
 
 #### Inherited from
 
-NodeVMOptions.env
+SimpleRunOptions.env
 
 #### Defined in
 
@@ -131,7 +162,7 @@ If set to `false` any calls to eval or function constructors (`Function`, `Gener
 
 #### Inherited from
 
-NodeVMOptions.eval
+SimpleRunOptions.eval
 
 #### Defined in
 
@@ -147,7 +178,7 @@ If set to `true` any attempt to run code using async will throw a `VMError` (def
 
 #### Inherited from
 
-NodeVMOptions.fixAsync
+SimpleRunOptions.fixAsync
 
 #### Defined in
 
@@ -161,7 +192,21 @@ ___
 
 #### Defined in
 
-[main/interface/guard.options.ts:9](https://github.com/canguser/vm-guard/blob/46d011c/main/interface/guard.options.ts#L9)
+[main/interface/guard.options.ts:9](https://github.com/canguser/vm-guard/blob/92e9a97/main/interface/guard.options.ts#L9)
+
+___
+
+### legacyRequire
+
+• `Optional` **legacyRequire**: `boolean`
+
+#### Inherited from
+
+SimpleRunOptions.legacyRequire
+
+#### Defined in
+
+[main/simple-run.ts:8](https://github.com/canguser/vm-guard/blob/92e9a97/main/simple-run.ts#L8)
 
 ___
 
@@ -171,7 +216,7 @@ ___
 
 #### Defined in
 
-[main/interface/guard.options.ts:6](https://github.com/canguser/vm-guard/blob/46d011c/main/interface/guard.options.ts#L6)
+[main/interface/guard.options.ts:6](https://github.com/canguser/vm-guard/blob/92e9a97/main/interface/guard.options.ts#L6)
 
 ___
 
@@ -183,7 +228,7 @@ ___
 
 #### Inherited from
 
-NodeVMOptions.nesting
+SimpleRunOptions.nesting
 
 #### Defined in
 
@@ -197,7 +242,7 @@ ___
 
 #### Defined in
 
-[main/interface/guard.options.ts:8](https://github.com/canguser/vm-guard/blob/46d011c/main/interface/guard.options.ts#L8)
+[main/interface/guard.options.ts:8](https://github.com/canguser/vm-guard/blob/92e9a97/main/interface/guard.options.ts#L8)
 
 ___
 
@@ -209,7 +254,7 @@ ___
 
 #### Inherited from
 
-NodeVMOptions.require
+SimpleRunOptions.require
 
 #### Defined in
 
@@ -219,17 +264,19 @@ ___
 
 ### sandbox
 
-• `Optional` **sandbox**: `any`
+• `Optional` **sandbox**: `Object`
 
-VM's global object.
+#### Index signature
+
+▪ [key: `string`]: `any`
 
 #### Inherited from
 
-NodeVMOptions.sandbox
+SimpleRunOptions.sandbox
 
 #### Defined in
 
-node_modules/vm2/index.d.ts:42
+[main/simple-run.ts:5](https://github.com/canguser/vm-guard/blob/92e9a97/main/simple-run.ts#L5)
 
 ___
 
@@ -241,7 +288,7 @@ File extensions that the internal module resolver should accept.
 
 #### Inherited from
 
-NodeVMOptions.sourceExtensions
+SimpleRunOptions.sourceExtensions
 
 #### Defined in
 
@@ -255,11 +302,11 @@ ___
 
 #### Overrides
 
-NodeVMOptions.timeout
+SimpleRunOptions.timeout
 
 #### Defined in
 
-[main/interface/guard.options.ts:5](https://github.com/canguser/vm-guard/blob/46d011c/main/interface/guard.options.ts#L5)
+[main/interface/guard.options.ts:5](https://github.com/canguser/vm-guard/blob/92e9a97/main/interface/guard.options.ts#L5)
 
 ___
 
@@ -271,7 +318,7 @@ If set to `false` any attempt to compile a WebAssembly module will throw a `WebA
 
 #### Inherited from
 
-NodeVMOptions.wasm
+SimpleRunOptions.wasm
 
 #### Defined in
 
@@ -283,12 +330,10 @@ ___
 
 • `Optional` **wrapper**: ``"commonjs"`` \| ``"none"``
 
-`commonjs` (default) to wrap script into CommonJS wrapper, `none` to retrieve value returned by the script.
-
 #### Inherited from
 
-NodeVMOptions.wrapper
+SimpleRunOptions.wrapper
 
 #### Defined in
 
-node_modules/vm2/index.d.ts:74
+[main/simple-run.ts:9](https://github.com/canguser/vm-guard/blob/92e9a97/main/simple-run.ts#L9)

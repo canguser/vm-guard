@@ -24,6 +24,11 @@
     |`timeout`|`1000`|包含异步/同步操作的超时时间（单位 ms）|
     |`memoryQuota`|`100`|最大能使用的内存（单位 m）|
     |`cpuQuota`|`0.5`|cpu 资源配额（百分比）|
+    |`globalAsync`|`false`|支持在代码块最外层使用`await`|
+    |`noHardwareLimit`|`false`|取消所有的硬件限制，如 CPU，内存|
+    |`legacyRequire`|`false`|使用 `vm2` 提供的 `require` 方法，默认使用 `VmGuard` 提供给的 `require` 方法|
+    |`allowedModules`|`[]`|允许使用的模块，支持正则，不限定内部或外部，只有在 `legacyRequire` 为 `false` 时生效|
+    |`allowedVariables`|`[]`|允许使用的真实的 Node 全局变量，支持正则，如果指定 `'process'`，那么 `process.exit()` 便可以退出程序|
 
 ## 简单安装
 ```shall script
