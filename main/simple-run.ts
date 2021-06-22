@@ -1,12 +1,18 @@
 'use strict';
 import { NodeVM, NodeVMOptions } from 'vm2';
+import * as pt from 'path';
+import * as fs from 'fs';
+
+const cwd = process.cwd();
 
 export interface SimpleRunOptions extends NodeVMOptions {
   sandbox?: { [key: string]: any }
   allowedVariables?: Array<string | RegExp>,
   allowedModules?: Array<string | RegExp>,
   legacyRequire?: boolean,
-  wrapper?: 'commonjs' | 'none'
+  wrapper?: 'commonjs' | 'none',
+  innerRunnerName?: string,
+  requireChain?: Array<string | RegExp>
 }
 
 // @ts-ignore
@@ -22,18 +28,33 @@ const globalArguments = {
 const defaultOptions: SimpleRunOptions = {
   allowedVariables: [],
   legacyRequire: false,
-  wrapper: 'commonjs'
+  wrapper: 'commonjs',
+  innerRunnerName: '@@vm-guard',
+  requireChain: []
 };
 
 function meetExps(test: string, exps: Array<string | RegExp>) {
   return exps.some(exp => new RegExp(exp).test(test));
 }
 
-function getMockModule(allowedModules = []) {
+function getMockModule(allowedModules = [], options: SimpleRunOptions) {
   let mockExports = {};
 
   const mockRequire = new Proxy((path) => {
       path = String(path);
+      if (path === options.innerRunnerName) {
+        return { run: (script, opt) => run(script, { ...options, ...opt }) };
+      }
+      if (path.startsWith('/') || path.startsWith('./') && meetExps(path, options.requireChain)) {
+        if (path.startsWith('./')) {
+          path = pt.join(cwd, path);
+        }
+        const script = fs.readFileSync(require.resolve(path), 'utf8');
+        return run(script, {
+          ...options,
+          wrapper: 'commonjs'
+        });
+      }
       if (!meetExps(path, allowedModules)) {
         throw new Error('Access denied, require failed: ' + path);
       }
@@ -80,30 +101,31 @@ function getMockModule(allowedModules = []) {
   });
 }
 
-export async function run(script: string, options: SimpleRunOptions = {}) {
+export function run(script: string, options: SimpleRunOptions = {}) {
   options = { ...defaultOptions, ...options };
 
   const { sandbox = {}, allowedVariables = [], allowedModules = [], legacyRequire } = options;
 
-  const mockModule = getMockModule(allowedModules);
+  const mockModule = getMockModule(allowedModules, options);
   const mockGlobalArguments = {
     ...globalArguments,
     ...mockModule.mock
   };
 
   let scriptWrapped = `
-    module.exports = function(context){
-      with(context){
+    module.exports = function(__ctx){
+      with(__ctx){
         ${script}
       }
-      return context.module.exports
+      return __ctx.module.exports
     }
   `;
 
   if (options.wrapper === 'none') {
     scriptWrapped = `
-      return function(context){
-        with(context){
+        console.log(__dirname)
+        return function(__ctx){
+        with(__ctx){
           ${script}
         }
       }
@@ -158,9 +180,9 @@ export async function run(script: string, options: SimpleRunOptions = {}) {
 
   });
 
-  const runSnippet = await NodeVM.code(scriptWrapped, '.vm.js', options);
+  const runSnippet = NodeVM.code(scriptWrapped, '.vm.js', options);
 
-  const result = await runSnippet(context);
+  const result = runSnippet(context);
 
   return options.wrapper === 'none' ? result : (mockModule.exports || {});
 }
