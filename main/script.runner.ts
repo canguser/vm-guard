@@ -1,4 +1,3 @@
-import { NodeVM } from 'vm2';
 import { GuardOptions } from './interface/guard.options';
 import { ProcessMessage } from './interface/process.message';
 import { ProcessMessageType } from './enum/process.message.type';

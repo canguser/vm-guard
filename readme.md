@@ -29,6 +29,8 @@
     |`legacyRequire`|`false`|使用 `vm2` 提供的 `require` 方法，默认使用 `VmGuard` 提供给的 `require` 方法|
     |`allowedModules`|`[]`|允许使用的模块，支持正则，不限定内部或外部，只有在 `legacyRequire` 为 `false` 时生效|
     |`allowedVariables`|`[]`|允许使用的真实的 Node 全局变量，支持正则，如果指定 `'process'`，那么 `process.exit()` 便可以退出程序|
+    |`compilePath`|`[]`|需要运行在沙箱的依赖列表|
+    |`compatibleRequire`|`false`|兼容 `vm2` 的 `require` 与 `legacyRequire` 不同的是 `allowedModules` 也会同时生效|
 
 ## 简单安装
 ```shall script

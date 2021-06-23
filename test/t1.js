@@ -1,0 +1,4 @@
+exports.A = class {
+  a() {
+  }
+};

@@ -17,6 +17,8 @@
 - [allowedModules](interface_guard_options.guardoptions.md#allowedmodules)
 - [allowedVariables](interface_guard_options.guardoptions.md#allowedvariables)
 - [argv](interface_guard_options.guardoptions.md#argv)
+- [compatibleRequire](interface_guard_options.guardoptions.md#compatiblerequire)
+- [compilePath](interface_guard_options.guardoptions.md#compilepath)
 - [compiler](interface_guard_options.guardoptions.md#compiler)
 - [concurrency](interface_guard_options.guardoptions.md#concurrency)
 - [console](interface_guard_options.guardoptions.md#console)
@@ -31,7 +33,6 @@
 - [nesting](interface_guard_options.guardoptions.md#nesting)
 - [noHardwareLimit](interface_guard_options.guardoptions.md#nohardwarelimit)
 - [require](interface_guard_options.guardoptions.md#require)
-- [requireChain](interface_guard_options.guardoptions.md#requirechain)
 - [sandbox](interface_guard_options.guardoptions.md#sandbox)
 - [sourceExtensions](interface_guard_options.guardoptions.md#sourceextensions)
 - [timeout](interface_guard_options.guardoptions.md#timeout)
@@ -50,7 +51,7 @@ SimpleRunOptions.allowedModules
 
 #### Defined in
 
-[main/simple-run.ts:11](https://github.com/canguser/vm-guard/blob/3d67209/main/simple-run.ts#L11)
+[main/simple-run.ts:10](https://github.com/canguser/vm-guard/blob/6586abe/main/simple-run.ts#L10)
 
 ___
 
@@ -64,7 +65,7 @@ SimpleRunOptions.allowedVariables
 
 #### Defined in
 
-[main/simple-run.ts:10](https://github.com/canguser/vm-guard/blob/3d67209/main/simple-run.ts#L10)
+[main/simple-run.ts:9](https://github.com/canguser/vm-guard/blob/6586abe/main/simple-run.ts#L9)
 
 ___
 
@@ -81,7 +82,35 @@ SimpleRunOptions.argv
 
 #### Defined in
 
-node_modules/vm2/index.d.ts:81
+node_modules/@palerock/vm2/index.d.ts:81
+
+___
+
+### compatibleRequire
+
+• `Optional` **compatibleRequire**: `boolean`
+
+#### Inherited from
+
+SimpleRunOptions.compatibleRequire
+
+#### Defined in
+
+[main/simple-run.ts:14](https://github.com/canguser/vm-guard/blob/6586abe/main/simple-run.ts#L14)
+
+___
+
+### compilePath
+
+• `Optional` **compilePath**: (`string` \| `RegExp`)[]
+
+#### Inherited from
+
+SimpleRunOptions.compilePath
+
+#### Defined in
+
+[main/simple-run.ts:12](https://github.com/canguser/vm-guard/blob/6586abe/main/simple-run.ts#L12)
 
 ___
 
@@ -98,7 +127,7 @@ SimpleRunOptions.compiler
 
 #### Defined in
 
-node_modules/vm2/index.d.ts:40
+node_modules/@palerock/vm2/index.d.ts:40
 
 ___
 
@@ -108,7 +137,7 @@ ___
 
 #### Defined in
 
-[main/interface/guard.options.ts:4](https://github.com/canguser/vm-guard/blob/3d67209/main/interface/guard.options.ts#L4)
+[main/interface/guard.options.ts:4](https://github.com/canguser/vm-guard/blob/6586abe/main/interface/guard.options.ts#L4)
 
 ___
 
@@ -124,7 +153,7 @@ SimpleRunOptions.console
 
 #### Defined in
 
-node_modules/vm2/index.d.ts:68
+node_modules/@palerock/vm2/index.d.ts:68
 
 ___
 
@@ -134,7 +163,7 @@ ___
 
 #### Defined in
 
-[main/interface/guard.options.ts:7](https://github.com/canguser/vm-guard/blob/3d67209/main/interface/guard.options.ts#L7)
+[main/interface/guard.options.ts:7](https://github.com/canguser/vm-guard/blob/6586abe/main/interface/guard.options.ts#L7)
 
 ___
 
@@ -151,7 +180,7 @@ SimpleRunOptions.env
 
 #### Defined in
 
-node_modules/vm2/index.d.ts:86
+node_modules/@palerock/vm2/index.d.ts:86
 
 ___
 
@@ -168,7 +197,7 @@ SimpleRunOptions.eval
 
 #### Defined in
 
-node_modules/vm2/index.d.ts:52
+node_modules/@palerock/vm2/index.d.ts:52
 
 ___
 
@@ -184,7 +213,7 @@ SimpleRunOptions.fixAsync
 
 #### Defined in
 
-node_modules/vm2/index.d.ts:60
+node_modules/@palerock/vm2/index.d.ts:60
 
 ___
 
@@ -194,7 +223,7 @@ ___
 
 #### Defined in
 
-[main/interface/guard.options.ts:9](https://github.com/canguser/vm-guard/blob/3d67209/main/interface/guard.options.ts#L9)
+[main/interface/guard.options.ts:9](https://github.com/canguser/vm-guard/blob/6586abe/main/interface/guard.options.ts#L9)
 
 ___
 
@@ -208,7 +237,7 @@ SimpleRunOptions.innerRunnerName
 
 #### Defined in
 
-[main/simple-run.ts:14](https://github.com/canguser/vm-guard/blob/3d67209/main/simple-run.ts#L14)
+[main/simple-run.ts:11](https://github.com/canguser/vm-guard/blob/6586abe/main/simple-run.ts#L11)
 
 ___
 
@@ -222,7 +251,7 @@ SimpleRunOptions.legacyRequire
 
 #### Defined in
 
-[main/simple-run.ts:12](https://github.com/canguser/vm-guard/blob/3d67209/main/simple-run.ts#L12)
+[main/simple-run.ts:13](https://github.com/canguser/vm-guard/blob/6586abe/main/simple-run.ts#L13)
 
 ___
 
@@ -232,7 +261,7 @@ ___
 
 #### Defined in
 
-[main/interface/guard.options.ts:6](https://github.com/canguser/vm-guard/blob/3d67209/main/interface/guard.options.ts#L6)
+[main/interface/guard.options.ts:6](https://github.com/canguser/vm-guard/blob/6586abe/main/interface/guard.options.ts#L6)
 
 ___
 
@@ -248,7 +277,7 @@ SimpleRunOptions.nesting
 
 #### Defined in
 
-node_modules/vm2/index.d.ts:72
+node_modules/@palerock/vm2/index.d.ts:72
 
 ___
 
@@ -258,7 +287,7 @@ ___
 
 #### Defined in
 
-[main/interface/guard.options.ts:8](https://github.com/canguser/vm-guard/blob/3d67209/main/interface/guard.options.ts#L8)
+[main/interface/guard.options.ts:8](https://github.com/canguser/vm-guard/blob/6586abe/main/interface/guard.options.ts#L8)
 
 ___
 
@@ -274,21 +303,7 @@ SimpleRunOptions.require
 
 #### Defined in
 
-node_modules/vm2/index.d.ts:70
-
-___
-
-### requireChain
-
-• `Optional` **requireChain**: (`string` \| `RegExp`)[]
-
-#### Inherited from
-
-SimpleRunOptions.requireChain
-
-#### Defined in
-
-[main/simple-run.ts:15](https://github.com/canguser/vm-guard/blob/3d67209/main/simple-run.ts#L15)
+node_modules/@palerock/vm2/index.d.ts:70
 
 ___
 
@@ -306,7 +321,7 @@ SimpleRunOptions.sandbox
 
 #### Defined in
 
-[main/simple-run.ts:9](https://github.com/canguser/vm-guard/blob/3d67209/main/simple-run.ts#L9)
+[main/simple-run.ts:8](https://github.com/canguser/vm-guard/blob/6586abe/main/simple-run.ts#L8)
 
 ___
 
@@ -322,7 +337,7 @@ SimpleRunOptions.sourceExtensions
 
 #### Defined in
 
-node_modules/vm2/index.d.ts:76
+node_modules/@palerock/vm2/index.d.ts:76
 
 ___
 
@@ -336,7 +351,7 @@ SimpleRunOptions.timeout
 
 #### Defined in
 
-[main/interface/guard.options.ts:5](https://github.com/canguser/vm-guard/blob/3d67209/main/interface/guard.options.ts#L5)
+[main/interface/guard.options.ts:5](https://github.com/canguser/vm-guard/blob/6586abe/main/interface/guard.options.ts#L5)
 
 ___
 
@@ -352,7 +367,7 @@ SimpleRunOptions.wasm
 
 #### Defined in
 
-node_modules/vm2/index.d.ts:56
+node_modules/@palerock/vm2/index.d.ts:56
 
 ___
 
@@ -360,10 +375,12 @@ ___
 
 • `Optional` **wrapper**: ``"commonjs"`` \| ``"none"``
 
+`commonjs` (default) to wrap script into CommonJS wrapper, `none` to retrieve value returned by the script.
+
 #### Inherited from
 
 SimpleRunOptions.wrapper
 
 #### Defined in
 
-[main/simple-run.ts:13](https://github.com/canguser/vm-guard/blob/3d67209/main/simple-run.ts#L13)
+node_modules/@palerock/vm2/index.d.ts:74

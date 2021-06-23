@@ -1,6 +1,6 @@
 {
   "name": "vm-guard",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "description": "A safer VM framework",
   "main": "lib/index.js",
   "mainMini": "dist/vm-guard.mini.js",
@@ -34,14 +34,15 @@
     "@types/mz": "^0.0.32",
     "mkdirp": "^0.5.1",
     "mz": "^2.7.0",
-    "vm2": "^3.9.3",
+    "@palerock/vm2": "^3.9.3",
     "debug": "^4.3.1"
   },
   "devDependencies": {
     "@types/node": "^15.12.2",
     "typescript": "^4.1.2",
     "typedoc": "^0.20.36",
-    "typedoc-plugin-markdown": "^3.8.1"
+    "typedoc-plugin-markdown": "^3.8.1",
+    "test-tako-connector-sdk": "^1.0.15"
   },
   "repository": "https://github.com/canguser/vm-guard.git"
 }

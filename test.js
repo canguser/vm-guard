@@ -9,7 +9,7 @@ debug.enable('vm-guard');
     sandbox: {
       a: ' test'
     }, // vm2 的 options
-    concurrency: 2, // 并发限制
+    concurrency: 5, // 并发限制
     globalAsync: true,
     timeout: 3000
   });
