@@ -100,8 +100,6 @@ module.exports = function(script, ctx, vm, options, run, require) {
 
     get(target, p, receiver) {
 
-      console.log('get',p);
-
       if (isInModule(<string>p)) {
         return mockModule.mock[p];
       }

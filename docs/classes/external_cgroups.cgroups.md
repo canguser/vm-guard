@@ -38,7 +38,7 @@
 
 #### Defined in
 
-[main/external/cgroups.ts:25](https://github.com/canguser/vm-guard/blob/6586abe/main/external/cgroups.ts#L25)
+[main/external/cgroups.ts:25](https://github.com/canguser/vm-guard/blob/d364e8e/main/external/cgroups.ts#L25)
 
 ## Properties
 
@@ -48,7 +48,7 @@
 
 #### Defined in
 
-[main/external/cgroups.ts:23](https://github.com/canguser/vm-guard/blob/6586abe/main/external/cgroups.ts#L23)
+[main/external/cgroups.ts:23](https://github.com/canguser/vm-guard/blob/d364e8e/main/external/cgroups.ts#L23)
 
 ___
 
@@ -58,7 +58,7 @@ ___
 
 #### Defined in
 
-[main/external/cgroups.ts:25](https://github.com/canguser/vm-guard/blob/6586abe/main/external/cgroups.ts#L25)
+[main/external/cgroups.ts:25](https://github.com/canguser/vm-guard/blob/d364e8e/main/external/cgroups.ts#L25)
 
 ___
 
@@ -68,7 +68,7 @@ ___
 
 #### Defined in
 
-[main/external/cgroups.ts:24](https://github.com/canguser/vm-guard/blob/6586abe/main/external/cgroups.ts#L24)
+[main/external/cgroups.ts:24](https://github.com/canguser/vm-guard/blob/d364e8e/main/external/cgroups.ts#L24)
 
 ___
 
@@ -78,7 +78,7 @@ ___
 
 #### Defined in
 
-[main/external/cgroups.ts:22](https://github.com/canguser/vm-guard/blob/6586abe/main/external/cgroups.ts#L22)
+[main/external/cgroups.ts:22](https://github.com/canguser/vm-guard/blob/d364e8e/main/external/cgroups.ts#L22)
 
 ## Methods
 
@@ -98,7 +98,7 @@ ___
 
 #### Defined in
 
-[main/external/cgroups.ts:56](https://github.com/canguser/vm-guard/blob/6586abe/main/external/cgroups.ts#L56)
+[main/external/cgroups.ts:56](https://github.com/canguser/vm-guard/blob/d364e8e/main/external/cgroups.ts#L56)
 
 ___
 
@@ -118,4 +118,4 @@ ___
 
 #### Defined in
 
-[main/external/cgroups.ts:33](https://github.com/canguser/vm-guard/blob/6586abe/main/external/cgroups.ts#L33)
+[main/external/cgroups.ts:33](https://github.com/canguser/vm-guard/blob/d364e8e/main/external/cgroups.ts#L33)
