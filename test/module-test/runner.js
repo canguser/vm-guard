@@ -13,10 +13,6 @@ const { runInProcess } = require('../../lib');
       allowedModules: [
         {
           role: '^test-tako-connector-sdk$',
-          children: ['lib']
-        },
-        {
-          role: 'node-fetch',
           children: ['.*']
         }
       ] // 只允许引用相对路径的依赖

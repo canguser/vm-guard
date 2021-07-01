@@ -3,13 +3,15 @@ import * as pt from 'path';
 import * as fs from 'fs';
 import { ModuleMatcher } from './interface/guard.options';
 
+declare const cacheResolves: { [key: string]: any };
+
 function meetExps(test: string, exps: Array<string | RegExp | ModuleMatcher>): ModuleMatcher[] | void {
 
   const matchers = exps.map<ModuleMatcher>(exp => {
     if (typeof exp === 'string' || (exp instanceof RegExp)) {
       return {
         role: exp,
-        children: []
+        children: ['.*']
       };
     }
     return exp;
@@ -86,12 +88,17 @@ function getMockModule(options: SimpleRunOptions, run, require) {
       } catch (e) {
         return thisRequire(path);
       }
+      if (detailPath in cacheResolves) {
+        return cacheResolves[detailPath];
+      }
       const script = fs.readFileSync(detailPath, 'utf8');
-      return run(script, {
+      const result = run(script, {
         ...innerOptions,
         wrapper: 'commonjs',
         moduleName
       }, detailPath);
+      cacheResolves[detailPath] = result;
+      return result;
     },
     {});
 

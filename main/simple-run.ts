@@ -39,6 +39,8 @@ const defaultOptions: SimpleRunOptions = {
   moduleName: ''
 };
 
+const cacheResolves: { [key: string]: any } = {};
+
 function meetExps(test: string, exps: Array<string | RegExp>) {
   return exps.some(exp => new RegExp(exp).test(test));
 }
@@ -60,25 +62,17 @@ export function run(script: string, options: SimpleRunOptions = {}, path?: strin
     return globalProperties.includes(p) && meetExps(<string>p, allowedVariables);
   }
 
-  function isGlobalProperty(p: string | symbol): boolean {
-    return p === 'global';
-  }
-
   const context = new Proxy(Object.create(null), {
 
     has: (target, p) =>
       !(p in sandbox) &&
       (
         Reflect.has(target, p) ||
-        isGlobalProperty(p) ||
         isMeetGlobalArguments(<string>p) ||
         isMeetGlobalProperties(<string>p)
       ),
 
     get(target, p, receiver) {
-      if (isGlobalProperty(p)) {
-        return receiver;
-      }
       if (isMeetGlobalProperties(<string>p)) {
         return _global[p];
       }
@@ -94,18 +88,10 @@ export function run(script: string, options: SimpleRunOptions = {}, path?: strin
 
   });
 
-  const mockExports = {};
-
-  const mockModule = {
-    exports: mockExports
-  };
-
   const filename = path ? path : pt.join(process.cwd(), './vm-bridge.js');
 
   const bridgeContext = {
-    module: mockModule,
-    exports: exports,
-    require,
+    module, exports, require, cacheResolves,
     __filename: filename,
     __dirname: pt.join(filename, '../'),
     console
