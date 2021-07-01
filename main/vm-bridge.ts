@@ -1,9 +1,30 @@
 import { SimpleRunOptions } from './simple-run';
 import * as pt from 'path';
 import * as fs from 'fs';
+import { ModuleMatcher } from './interface/guard.options';
 
-function meetExps(test: string, exps: Array<string | RegExp>) {
-  return exps.some(exp => new RegExp(exp).test(test));
+function meetExps(test: string, exps: Array<string | RegExp | ModuleMatcher>): ModuleMatcher[] | void {
+
+  const matchers = exps.map<ModuleMatcher>(exp => {
+    if (typeof exp === 'string' || (exp instanceof RegExp)) {
+      return {
+        role: exp,
+        children: []
+      };
+    }
+    return exp;
+  });
+
+  const matches = matchers.filter(matcher => new RegExp(matcher.role).test(test));
+  if (!matches || matches.length === 0) {
+    return void 0;
+  }
+  return matches;
+
+}
+
+function isModulePath(path: string): boolean {
+  return !path.startsWith('.') && !path.startsWith('/');
 }
 
 const vmRequire = require;
@@ -20,28 +41,56 @@ function getMockModule(options: SimpleRunOptions, run, require) {
       if (options.allowInnerRunner && path === innerRunnerName) {
         return { run: (script, opt, path?: string) => run(script, { ...options, ...opt }, path) };
       }
-      if (!meetExps(path, allowedModules)) {
+
+
+      if (options.moduleName && path.startsWith('.')) {
+        try {
+          const modulePath = require.resolve(options.moduleName);
+          const modulePrefix = modulePath.split(options.moduleName)[0] + options.moduleName;
+          const targetFullPath = pt.join(__dirname, path);
+          path = targetFullPath.replace(modulePrefix, options.moduleName);
+        } catch (e) {
+          // ignore
+        }
+      }
+
+      const matchedMatchers = meetExps(path, allowedModules);
+
+      if (!matchedMatchers) {
         throw new Error('Access denied, require failed: ' + path);
       }
+
+      const innerOptions = { ...options };
+      innerOptions.allowedModules = [...allowedModules, ...(matchedMatchers.map(m => m.children).flat(1))]
+        .filter(m => m);
+
+
       if (!meetExps(path, compilePath)) {
         if (path.startsWith('.')) {
           path = pt.join(__dirname, path);
         }
         return thisRequire(path);
       }
+      let moduleName = '';
       if (path.startsWith('.')) {
         path = pt.join(__dirname, path);
+      } else if (!path.startsWith('/')) {
+        moduleName = path.split('/')[0] || '';
       }
       let detailPath;
       try {
         detailPath = require.resolve(path);
+        if (isModulePath(detailPath)) {
+          return thisRequire(path);
+        }
       } catch (e) {
         return thisRequire(path);
       }
       const script = fs.readFileSync(detailPath, 'utf8');
       return run(script, {
-        ...options,
-        wrapper: 'commonjs'
+        ...innerOptions,
+        wrapper: 'commonjs',
+        moduleName
       }, detailPath);
     },
     {});

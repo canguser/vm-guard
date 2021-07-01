@@ -3,16 +3,18 @@ import { NodeVM, NodeVMOptions } from '@palerock/vm2';
 import Vm from 'vm';
 import * as fs from 'fs';
 import * as pt from 'path';
+import { ModuleStringMatcher } from './interface/guard.options';
 
 export interface SimpleRunOptions extends NodeVMOptions {
   sandbox?: { [key: string]: any }
   allowedVariables?: Array<string | RegExp>,
-  allowedModules?: Array<string | RegExp>,
+  allowedModules?: ModuleStringMatcher[],
   allowInnerRunner?: boolean,
   innerRunnerName?: string,
   compilePath?: Array<string | RegExp>,
   legacyRequire?: boolean,
-  compatibleRequire?: boolean
+  compatibleRequire?: boolean,
+  moduleName?: string
 }
 
 // @ts-ignore
@@ -27,12 +29,14 @@ const globalArguments = {
 
 const defaultOptions: SimpleRunOptions = {
   allowedVariables: [],
+  allowedModules: [],
   legacyRequire: false,
   wrapper: 'commonjs',
   innerRunnerName: '@@vm-guard',
   allowInnerRunner: true,
   compilePath: [],
-  compatibleRequire: false
+  compatibleRequire: false,
+  moduleName: ''
 };
 
 function meetExps(test: string, exps: Array<string | RegExp>) {

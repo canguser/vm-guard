@@ -8,3 +8,10 @@ export interface GuardOptions extends SimpleRunOptions {
   noHardwareLimit?: boolean;
   globalAsync?: boolean;
 }
+
+export interface ModuleMatcher {
+  role: string | RegExp,
+  children?: ModuleStringMatcher[]
+}
+
+export type ModuleStringMatcher = string | RegExp | ModuleMatcher
