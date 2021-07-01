@@ -8,6 +8,7 @@ export interface SimpleRunOptions extends NodeVMOptions {
   sandbox?: { [key: string]: any }
   allowedVariables?: Array<string | RegExp>,
   allowedModules?: Array<string | RegExp>,
+  allowInnerRunner?: boolean,
   innerRunnerName?: string,
   compilePath?: Array<string | RegExp>,
   legacyRequire?: boolean,
@@ -29,6 +30,7 @@ const defaultOptions: SimpleRunOptions = {
   legacyRequire: false,
   wrapper: 'commonjs',
   innerRunnerName: '@@vm-guard',
+  allowInnerRunner: true,
   compilePath: [],
   compatibleRequire: false
 };

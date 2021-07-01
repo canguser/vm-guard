@@ -1,4 +1,4 @@
-const { run } = require('../lib');
+const { cGuard:{ run} } = require('../lib');
 
 // function run(script, options) {
 //   return NodeVM.code(script, './vm.js', options);

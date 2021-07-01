@@ -17,7 +17,7 @@ function getMockModule(options: SimpleRunOptions, run, require) {
   const mockRequire = legacyRequire ? vmRequire : new Proxy((path) => {
       const thisRequire = compatibleRequire ? vmRequire : require;
       path = String(path);
-      if (path === innerRunnerName) {
+      if (options.allowInnerRunner && path === innerRunnerName) {
         return { run: (script, opt, path?: string) => run(script, { ...options, ...opt }, path) };
       }
       if (!meetExps(path, allowedModules)) {
@@ -29,19 +29,20 @@ function getMockModule(options: SimpleRunOptions, run, require) {
         }
         return thisRequire(path);
       }
+      if (path.startsWith('.')) {
+        path = pt.join(__dirname, path);
+      }
+      let detailPath;
       try {
-        if (path.startsWith('.')) {
-          path = pt.join(__dirname, path);
-        }
-        const detailPath = require.resolve(path);
-        const script = fs.readFileSync(detailPath, 'utf8');
-        return run(script, {
-          ...options,
-          wrapper: 'commonjs'
-        }, detailPath);
+        detailPath = require.resolve(path);
       } catch (e) {
         return thisRequire(path);
       }
+      const script = fs.readFileSync(detailPath, 'utf8');
+      return run(script, {
+        ...options,
+        wrapper: 'commonjs'
+      }, detailPath);
     },
     {});
 
