@@ -21,7 +21,7 @@
 
 #### Defined in
 
-[main/enum/process.message.type.ts:2](https://github.com/canguser/vm-guard/blob/6b72a28/main/enum/process.message.type.ts#L2)
+[main/enum/process.message.type.ts:2](https://github.com/canguser/vm-guard/blob/0cf53cb/main/enum/process.message.type.ts#L2)
 
 ___
 
@@ -31,7 +31,7 @@ ___
 
 #### Defined in
 
-[main/enum/process.message.type.ts:4](https://github.com/canguser/vm-guard/blob/6b72a28/main/enum/process.message.type.ts#L4)
+[main/enum/process.message.type.ts:4](https://github.com/canguser/vm-guard/blob/0cf53cb/main/enum/process.message.type.ts#L4)
 
 ___
 
@@ -41,7 +41,7 @@ ___
 
 #### Defined in
 
-[main/enum/process.message.type.ts:3](https://github.com/canguser/vm-guard/blob/6b72a28/main/enum/process.message.type.ts#L3)
+[main/enum/process.message.type.ts:3](https://github.com/canguser/vm-guard/blob/0cf53cb/main/enum/process.message.type.ts#L3)
 
 ___
 
@@ -51,4 +51,4 @@ ___
 
 #### Defined in
 
-[main/enum/process.message.type.ts:5](https://github.com/canguser/vm-guard/blob/6b72a28/main/enum/process.message.type.ts#L5)
+[main/enum/process.message.type.ts:5](https://github.com/canguser/vm-guard/blob/0cf53cb/main/enum/process.message.type.ts#L5)

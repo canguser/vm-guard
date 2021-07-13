@@ -66,19 +66,17 @@ function getMockModule(options: SimpleRunOptions, run, require) {
       innerOptions.allowedModules = [...allowedModules, ...(matchedMatchers.map(m => m.children).flat(1))]
         .filter(m => m);
 
-
-      if (!meetExps(path, compilePath)) {
-        if (path.startsWith('.')) {
-          path = pt.join(__dirname, path);
-        }
-        return thisRequire(path);
-      }
       let moduleName = '';
       if (path.startsWith('.')) {
         path = pt.join(__dirname, path);
       } else if (!path.startsWith('/')) {
         moduleName = path.split('/')[0] || '';
       }
+
+      if (!meetExps(path, compilePath)) {
+        return thisRequire(path);
+      }
+
       let detailPath;
       try {
         detailPath = require.resolve(path);
@@ -88,6 +86,7 @@ function getMockModule(options: SimpleRunOptions, run, require) {
       } catch (e) {
         return thisRequire(path);
       }
+
       if (detailPath in cacheResolves) {
         return cacheResolves[detailPath];
       }
