@@ -56,6 +56,7 @@ function getMockModule(options: SimpleRunOptions, run, require) {
         }
       }
 
+      const statPath = path;
       const matchedMatchers = meetExps(path, allowedModules);
 
       if (!matchedMatchers) {
@@ -73,7 +74,7 @@ function getMockModule(options: SimpleRunOptions, run, require) {
         moduleName = path.split('/')[0] || '';
       }
 
-      if (!meetExps(path, compilePath)) {
+      if (moduleName ? !meetExps(statPath, compilePath) : !meetExps(path, compilePath)) {
         return thisRequire(path);
       }
 
