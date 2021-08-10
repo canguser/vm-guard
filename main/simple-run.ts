@@ -4,6 +4,7 @@ import Vm from 'vm';
 import * as fs from 'fs';
 import * as pt from 'path';
 import { ModuleStringMatcher } from './interface/guard.options';
+import { Configuration, configure, getLogger } from 'log4js';
 
 export interface SimpleRunOptions extends NodeVMOptions {
   sandbox?: { [key: string]: any }
@@ -14,7 +15,9 @@ export interface SimpleRunOptions extends NodeVMOptions {
   compilePath?: Array<string | RegExp>,
   legacyRequire?: boolean,
   compatibleRequire?: boolean,
-  moduleName?: string
+  moduleName?: string,
+  loggerConfigure?: Configuration,
+  loggerPrefix?: string
 }
 
 // @ts-ignore
@@ -36,7 +39,8 @@ const defaultOptions: SimpleRunOptions = {
   allowInnerRunner: true,
   compilePath: [],
   compatibleRequire: false,
-  moduleName: ''
+  moduleName: '',
+  loggerPrefix: ''
 };
 
 const cacheResolves: { [key: string]: any } = {};
@@ -47,8 +51,23 @@ function meetExps(test: string, exps: Array<string | RegExp>) {
 
 export function run(script: string, options: SimpleRunOptions = {}, path?: string) {
   options = { ...defaultOptions, ...options };
+  const filename = path ? path : pt.join(process.cwd(), './vm-bridge.js');
+  let { sandbox, allowedVariables = [], loggerConfigure, loggerPrefix } = options;
 
-  const { sandbox = {}, allowedVariables = [] } = options;
+  let mockConsole: any = console;
+
+  if (loggerConfigure) {
+    configure(loggerConfigure);
+    mockConsole = getLogger(loggerPrefix || filename);
+  }
+
+  if (!sandbox) {
+    options.sandbox = sandbox = {};
+  }
+
+  if (!('console' in sandbox)) {
+    sandbox.console = mockConsole;
+  }
 
   const mockGlobalArguments = {
     ...globalArguments
@@ -87,8 +106,6 @@ export function run(script: string, options: SimpleRunOptions = {}, path?: strin
     }
 
   });
-
-  const filename = path ? path : pt.join(process.cwd(), './vm-bridge.js');
 
   const bridgeContext = {
     module, exports, require, cacheResolves,

@@ -3,6 +3,7 @@ import { VmGuard } from './vm.guard';
 
 export * from './vm.guard';
 export * as cGuard from './simple-run';
+export { Configuration } from 'log4js';
 
 
 export async function runInProcess(script: string, options?: GuardOptions, path: string = './vm.js'): Promise<any> {

@@ -5,7 +5,7 @@ const { runInProcess } = require('../../lib');
 
   const fs = await runInProcess(
     `
-        const a = require('test-tako-connector-sdk@1.0.15'); // 引入依赖 module
+        const a = require('test-tako-connector-sdk'); // 引入依赖 module
         module.exports = a;
     `,
     {

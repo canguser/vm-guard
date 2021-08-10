@@ -11,7 +11,7 @@ function meetExps(test: string, exps: Array<string | RegExp | ModuleMatcher>): M
     if (typeof exp === 'string' || (exp instanceof RegExp)) {
       return {
         role: exp,
-        children: ['.*']
+        children: []
       };
     }
     return exp;

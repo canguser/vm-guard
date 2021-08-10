@@ -30,6 +30,8 @@
 - [globalAsync](interface_guard_options.guardoptions.md#globalasync)
 - [innerRunnerName](interface_guard_options.guardoptions.md#innerrunnername)
 - [legacyRequire](interface_guard_options.guardoptions.md#legacyrequire)
+- [loggerConfigure](interface_guard_options.guardoptions.md#loggerconfigure)
+- [loggerPrefix](interface_guard_options.guardoptions.md#loggerprefix)
 - [memoryQuota](interface_guard_options.guardoptions.md#memoryquota)
 - [moduleName](interface_guard_options.guardoptions.md#modulename)
 - [nesting](interface_guard_options.guardoptions.md#nesting)
@@ -53,7 +55,7 @@ SimpleRunOptions.allowInnerRunner
 
 #### Defined in
 
-[main/simple-run.ts:12](https://github.com/canguser/vm-guard/blob/bf26030/main/simple-run.ts#L12)
+[main/simple-run.ts:13](https://github.com/canguser/vm-guard/blob/2dbe098/main/simple-run.ts#L13)
 
 ___
 
@@ -67,7 +69,7 @@ SimpleRunOptions.allowedModules
 
 #### Defined in
 
-[main/simple-run.ts:11](https://github.com/canguser/vm-guard/blob/bf26030/main/simple-run.ts#L11)
+[main/simple-run.ts:12](https://github.com/canguser/vm-guard/blob/2dbe098/main/simple-run.ts#L12)
 
 ___
 
@@ -81,7 +83,7 @@ SimpleRunOptions.allowedVariables
 
 #### Defined in
 
-[main/simple-run.ts:10](https://github.com/canguser/vm-guard/blob/bf26030/main/simple-run.ts#L10)
+[main/simple-run.ts:11](https://github.com/canguser/vm-guard/blob/2dbe098/main/simple-run.ts#L11)
 
 ___
 
@@ -112,7 +114,7 @@ SimpleRunOptions.compatibleRequire
 
 #### Defined in
 
-[main/simple-run.ts:16](https://github.com/canguser/vm-guard/blob/bf26030/main/simple-run.ts#L16)
+[main/simple-run.ts:17](https://github.com/canguser/vm-guard/blob/2dbe098/main/simple-run.ts#L17)
 
 ___
 
@@ -126,7 +128,7 @@ SimpleRunOptions.compilePath
 
 #### Defined in
 
-[main/simple-run.ts:14](https://github.com/canguser/vm-guard/blob/bf26030/main/simple-run.ts#L14)
+[main/simple-run.ts:15](https://github.com/canguser/vm-guard/blob/2dbe098/main/simple-run.ts#L15)
 
 ___
 
@@ -153,7 +155,7 @@ ___
 
 #### Defined in
 
-[main/interface/guard.options.ts:4](https://github.com/canguser/vm-guard/blob/bf26030/main/interface/guard.options.ts#L4)
+[main/interface/guard.options.ts:4](https://github.com/canguser/vm-guard/blob/2dbe098/main/interface/guard.options.ts#L4)
 
 ___
 
@@ -179,7 +181,7 @@ ___
 
 #### Defined in
 
-[main/interface/guard.options.ts:7](https://github.com/canguser/vm-guard/blob/bf26030/main/interface/guard.options.ts#L7)
+[main/interface/guard.options.ts:7](https://github.com/canguser/vm-guard/blob/2dbe098/main/interface/guard.options.ts#L7)
 
 ___
 
@@ -239,7 +241,7 @@ ___
 
 #### Defined in
 
-[main/interface/guard.options.ts:9](https://github.com/canguser/vm-guard/blob/bf26030/main/interface/guard.options.ts#L9)
+[main/interface/guard.options.ts:9](https://github.com/canguser/vm-guard/blob/2dbe098/main/interface/guard.options.ts#L9)
 
 ___
 
@@ -253,7 +255,7 @@ SimpleRunOptions.innerRunnerName
 
 #### Defined in
 
-[main/simple-run.ts:13](https://github.com/canguser/vm-guard/blob/bf26030/main/simple-run.ts#L13)
+[main/simple-run.ts:14](https://github.com/canguser/vm-guard/blob/2dbe098/main/simple-run.ts#L14)
 
 ___
 
@@ -267,7 +269,35 @@ SimpleRunOptions.legacyRequire
 
 #### Defined in
 
-[main/simple-run.ts:15](https://github.com/canguser/vm-guard/blob/bf26030/main/simple-run.ts#L15)
+[main/simple-run.ts:16](https://github.com/canguser/vm-guard/blob/2dbe098/main/simple-run.ts#L16)
+
+___
+
+### loggerConfigure
+
+• `Optional` **loggerConfigure**: `Configuration`
+
+#### Inherited from
+
+SimpleRunOptions.loggerConfigure
+
+#### Defined in
+
+[main/simple-run.ts:19](https://github.com/canguser/vm-guard/blob/2dbe098/main/simple-run.ts#L19)
+
+___
+
+### loggerPrefix
+
+• `Optional` **loggerPrefix**: `string`
+
+#### Inherited from
+
+SimpleRunOptions.loggerPrefix
+
+#### Defined in
+
+[main/simple-run.ts:20](https://github.com/canguser/vm-guard/blob/2dbe098/main/simple-run.ts#L20)
 
 ___
 
@@ -277,7 +307,7 @@ ___
 
 #### Defined in
 
-[main/interface/guard.options.ts:6](https://github.com/canguser/vm-guard/blob/bf26030/main/interface/guard.options.ts#L6)
+[main/interface/guard.options.ts:6](https://github.com/canguser/vm-guard/blob/2dbe098/main/interface/guard.options.ts#L6)
 
 ___
 
@@ -291,7 +321,7 @@ SimpleRunOptions.moduleName
 
 #### Defined in
 
-[main/simple-run.ts:17](https://github.com/canguser/vm-guard/blob/bf26030/main/simple-run.ts#L17)
+[main/simple-run.ts:18](https://github.com/canguser/vm-guard/blob/2dbe098/main/simple-run.ts#L18)
 
 ___
 
@@ -317,7 +347,7 @@ ___
 
 #### Defined in
 
-[main/interface/guard.options.ts:8](https://github.com/canguser/vm-guard/blob/bf26030/main/interface/guard.options.ts#L8)
+[main/interface/guard.options.ts:8](https://github.com/canguser/vm-guard/blob/2dbe098/main/interface/guard.options.ts#L8)
 
 ___
 
@@ -351,7 +381,7 @@ SimpleRunOptions.sandbox
 
 #### Defined in
 
-[main/simple-run.ts:9](https://github.com/canguser/vm-guard/blob/bf26030/main/simple-run.ts#L9)
+[main/simple-run.ts:10](https://github.com/canguser/vm-guard/blob/2dbe098/main/simple-run.ts#L10)
 
 ___
 
@@ -381,7 +411,7 @@ SimpleRunOptions.timeout
 
 #### Defined in
 
-[main/interface/guard.options.ts:5](https://github.com/canguser/vm-guard/blob/bf26030/main/interface/guard.options.ts#L5)
+[main/interface/guard.options.ts:5](https://github.com/canguser/vm-guard/blob/2dbe098/main/interface/guard.options.ts#L5)
 
 ___
 
