@@ -42,11 +42,18 @@ function getMockModule(options: SimpleRunOptions, run, require) {
       path = String(path).trim();
 
       // require mocking
-      const mockingKeys = Object.keys(requireMocking);
-      for (const key of mockingKeys) {
-        if (path.startsWith(key)) {
-          path = path.replace(key, requireMocking[key]);
-          break;
+      const mockingPaths = Object.keys(requireMocking);
+      mocking: for (const filePathReg of mockingPaths) {
+        const reg = new RegExp(filePathReg);
+        if (reg.test(__filename)) {
+          const mocking = requireMocking[filePathReg] || {};
+          const keys = Object.keys(mocking);
+          for (const key of keys) {
+            if (path.startsWith(key)) {
+              path = path.replace(key, mocking[key]);
+              break mocking;
+            }
+          }
         }
       }
 

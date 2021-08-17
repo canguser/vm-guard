@@ -10,8 +10,9 @@ const { runInProcess } = require('../../lib');
       compilePath: ['.*'],
       allowedModules: ['.*'],
       requireMocking: {
-        '@/': './',
-        '@@/': '../'
+        'require-mocking-test/vm': {
+          '@/': './'
+        }
       }
     }
   );

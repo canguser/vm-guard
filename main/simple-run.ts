@@ -18,7 +18,11 @@ export interface SimpleRunOptions extends NodeVMOptions {
   moduleName?: string,
   loggerConfigure?: Configuration,
   loggerPrefix?: string,
-  requireMocking?: { [key: string]: string }
+  requireMocking?: {
+    [filePath: string]: {
+      [requirePath: string]: string
+    }
+  }
 }
 
 // @ts-ignore

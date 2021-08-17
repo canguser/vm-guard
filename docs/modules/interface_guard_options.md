@@ -21,4 +21,4 @@
 
 #### Defined in
 
-[main/interface/guard.options.ts:17](https://github.com/canguser/vm-guard/blob/a5740c2/main/interface/guard.options.ts#L17)
+[main/interface/guard.options.ts:17](https://github.com/canguser/vm-guard/blob/403c6b7/main/interface/guard.options.ts#L17)
