@@ -17,7 +17,8 @@ export interface SimpleRunOptions extends NodeVMOptions {
   compatibleRequire?: boolean,
   moduleName?: string,
   loggerConfigure?: Configuration,
-  loggerPrefix?: string
+  loggerPrefix?: string,
+  requireMocking?: { [key: string]: string }
 }
 
 // @ts-ignore
@@ -57,8 +58,12 @@ export function run(script: string, options: SimpleRunOptions = {}, path?: strin
   let mockConsole: any = console;
 
   if (loggerConfigure) {
-    configure(loggerConfigure);
-    mockConsole = getLogger(loggerPrefix || filename);
+    try {
+      configure(loggerConfigure);
+      mockConsole = getLogger(loggerPrefix || filename);
+    } catch (e) {
+      console.warn('vm logs initialize failed, ', e);
+    }
   }
 
   if (!sandbox) {

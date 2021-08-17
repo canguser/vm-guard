@@ -33,13 +33,24 @@ const vmRequire = require;
 
 function getMockModule(options: SimpleRunOptions, run, require) {
 
-  const { compilePath = [], allowedModules = [], legacyRequire, innerRunnerName, compatibleRequire } = options || {};
+  const { compilePath = [], allowedModules = [], legacyRequire, innerRunnerName, compatibleRequire, requireMocking = {} } = options || {};
 
   let mockExports = {};
 
   const mockRequire = legacyRequire ? vmRequire : new Proxy((path) => {
       const thisRequire = compatibleRequire ? vmRequire : require;
-      path = String(path);
+      path = String(path).trim();
+
+      // require mocking
+      const mockingKeys = Object.keys(requireMocking);
+      for (const key of mockingKeys) {
+        if (path.startsWith(key)) {
+          path = path.replace(key, requireMocking[key]);
+          break;
+        }
+      }
+
+      // inner runner
       if (options.allowInnerRunner && path === innerRunnerName) {
         return { run: (script, opt, path?: string) => run(script, { ...options, ...opt }, path) };
       }
