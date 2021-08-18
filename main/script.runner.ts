@@ -4,7 +4,7 @@ import { ProcessMessageType } from './enum/process.message.type';
 import { run } from './simple-run';
 
 async function runScript(script: string, options?: GuardOptions, path?: string) {
-  return run(script, options);
+  return run(script, options, path);
 }
 
 function getAsyncScript(script: string) {

@@ -59,7 +59,13 @@ function getMockModule(options: SimpleRunOptions, run, require) {
 
       // inner runner
       if (options.allowInnerRunner && path === innerRunnerName) {
-        return { run: (script, opt, path?: string) => run(script, { ...options, ...opt }, path) };
+        return {
+          run: (script, opt, path: string = './inner-vm-runner.js') => run(
+            script,
+            { ...options, ...opt },
+            path.startsWith('/') ? path : pt.join(__dirname, path)
+          )
+        };
       }
 
 
@@ -159,7 +165,7 @@ function getMockModule(options: SimpleRunOptions, run, require) {
   });
 }
 
-module.exports = function(script, ctx, vm, options, run, require) {
+module.exports = function(script, ctx, vm, options, run, require, path = './vm.js') {
 
   const mockModule = getMockModule(options, run, require);
 
@@ -203,7 +209,7 @@ module.exports = function(script, ctx, vm, options, run, require) {
     `;
   }
 
-  const runSnippet = vm.code(scriptWrapped, './vm.js', options);
+  const runSnippet = vm.code(scriptWrapped, path, options);
   const result = runSnippet(context);
   return options.wrapper === 'none' ? result : (mockModule.exports || {});
 };

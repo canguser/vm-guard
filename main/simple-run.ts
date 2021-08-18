@@ -54,9 +54,10 @@ function meetExps(test: string, exps: Array<string | RegExp>) {
   return exps.some(exp => new RegExp(exp).test(test));
 }
 
-export function run(script: string, options: SimpleRunOptions = {}, path?: string) {
+export function run(script: string, options: SimpleRunOptions = {}, path: string = './vm.js') {
   options = { ...defaultOptions, ...options };
-  const filename = path ? path : pt.join(process.cwd(), './vm-bridge.js');
+  const cwd = path.startsWith('/') ? pt.join(path, '../') : process.cwd();
+  const filename = pt.join(cwd, './vm-bridge.js');
   let { sandbox, allowedVariables = [], loggerConfigure, loggerPrefix } = options;
 
   let mockConsole: any = console;
@@ -131,5 +132,5 @@ export function run(script: string, options: SimpleRunOptions = {}, path?: strin
     }
   );
 
-  return runSnippet(script, context, NodeVM, options, run, require);
+  return runSnippet(script, context, NodeVM, options, run, require, path);
 }

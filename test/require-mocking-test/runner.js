@@ -3,18 +3,19 @@ const { runInProcess } = require('../../lib');
 
   const result = await runInProcess(
     `
-        module.exports = require('@/a');
+        module.exports = require('../a');
     `,
     {
       timeout: 10 * 1000,
       compilePath: ['.*'],
       allowedModules: ['.*'],
       requireMocking: {
-        'require-mocking-test/vm': {
-          '@/': './'
+        '^\/asdasd\/': {
+          '../': '@/'
         }
       }
-    }
+    },
+    '/asdasd/vm.js'
   );
 
   console.log(result);

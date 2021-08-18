@@ -17,7 +17,7 @@ const { runInProcess } = require('../../lib');
           },
           file: {
             type: 'fileSync',
-            filename: '/tmp/.connector/logs/connector/c70ef2d6-ba3d-4649-9ec7-9f2be3d87741.log'
+            filename: '/Users/ryan/WebstormProjects/project/vm-guard/test/logger-test/connector/logs/connector/c70ef2d6-ba3d-4649-9ec7-9f2be3d87741.log'
           }
         },
         categories: {
