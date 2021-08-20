@@ -65,7 +65,19 @@ export function run(script: string, options: SimpleRunOptions = {}, path: string
   if (loggerConfigure) {
     try {
       configure(loggerConfigure);
-      mockConsole = getLogger(loggerPrefix || filename);
+      const logger = getLogger(loggerPrefix || filename);
+      const loggerMethods = ['trace', 'debug', 'info', 'warn', 'error', 'fatal', 'mark'];
+      mockConsole = new Proxy(console, {
+        get(target: Console, p: string | symbol, receiver: any): any {
+          if (p === 'log') {
+            return logger.info.bind(logger);
+          }
+          if (typeof p === 'string' && loggerMethods.includes(p)) {
+            return logger[p].bind(logger);
+          }
+          return Reflect.get(target, p, receiver);
+        }
+      });
     } catch (e) {
       console.warn('vm logs initialize failed, ', e);
     }
