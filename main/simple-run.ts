@@ -73,7 +73,11 @@ export function run(script: string, options: SimpleRunOptions = {}, path: string
             return logger.info.bind(logger);
           }
           if (typeof p === 'string' && loggerMethods.includes(p)) {
-            return logger[p].bind(logger);
+            try {
+              return logger[p].bind(logger);
+            } catch (e) {
+              console.warn('[warn] log4js logged failed once.', e?.stack);
+            }
           }
           return Reflect.get(target, p, receiver);
         }

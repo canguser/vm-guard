@@ -9,7 +9,7 @@ const log = require('debug')('vm-guard');
 
 const defaultOptions: GuardOptions = {
   timeout: 1000,
-  concurrency: 2,
+  concurrency: Infinity,
   cpuQuota: 0.5,
   memoryQuota: 125,
   globalAsync: false,
