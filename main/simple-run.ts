@@ -22,7 +22,8 @@ export interface SimpleRunOptions extends NodeVMOptions {
     [filePath: string]: {
       [requirePath: string]: string
     }
-  }
+  },
+  emptyRequire?: boolean
 }
 
 // @ts-ignore
@@ -45,7 +46,8 @@ const defaultOptions: SimpleRunOptions = {
   compilePath: [],
   compatibleRequire: false,
   moduleName: '',
-  loggerPrefix: ''
+  loggerPrefix: '',
+  emptyRequire: false
 };
 
 const cacheResolves: { [key: string]: any } = {};

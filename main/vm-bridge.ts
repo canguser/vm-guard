@@ -33,11 +33,16 @@ const vmRequire = require;
 
 function getMockModule(options: SimpleRunOptions, run, require) {
 
-  const { compilePath = [], allowedModules = [], legacyRequire, innerRunnerName, compatibleRequire, requireMocking = {} } = options || {};
+  const { compilePath = [], allowedModules = [], legacyRequire, innerRunnerName, compatibleRequire, requireMocking = {}, emptyRequire } = options || {};
 
   let mockExports = {};
 
   const mockRequire = legacyRequire ? vmRequire : new Proxy((path) => {
+
+      if (emptyRequire) {
+        return {};
+      }
+
       const thisRequire = compatibleRequire ? vmRequire : require;
       path = String(path).trim();
 
